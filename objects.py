@@ -25,6 +25,7 @@ class player():
 	"""docstring for player"""
 	def __init__(self,name):
 		self.name=name
+		self.num_penalties=0
 		self.hand=[]  #private
 		self.round_score=0
 		self.score=0
@@ -44,12 +45,16 @@ class player():
 		self.hand.remove(c)
 		# make fn
 	def get_3_init(self,cards):
-		# make fn
 		self.hand.append(cards[0])
 		self.hand.append(cards[1])
 		self.hand.append(cards[2])
-	def choose(self,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
-		# card=get_card(self.hand,player1,player2,player3)
+	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
+		
+		# card= get_card_from_user(this,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		
+		# --------------------------------------------------------------------------------------------------------
+		# THIS CODE IS FOR MANUAL BOT
+		# COMMENT OUT THESE LINES AND UNCOMMENT THE ABOVE LINE TO WORK AS YOUR BOT
 		print "cards player till now in round:- "
 		for i in cardsforhand:
 			print i.suit,i.rank
@@ -60,20 +65,9 @@ class player():
 		print "give index of card:-"
 		index=input()
 		return self.hand[index]
-		# make fn
-		# check if valid card
+		# --------------------------------------------------------------------------------------------------------
 	def get_hand(self):
 		return self.hand
 	def add_passed_cards(self,card):
 		self.hand.remove(card)
 		self.passed_cards.append(card)
-		# bool valid=False
-		# for i in self.hand:
-		# 	if card==self.hand[i]:
-		# 		valid=True
-		# 		break
-		# if(valid):
-		# 	return card	
-		# else:
-		# 	print "wrong selection"	
-		# 	self.score-=5
