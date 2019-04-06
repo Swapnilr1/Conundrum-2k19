@@ -110,7 +110,7 @@ def give_cards(players,to_pass):
 				players[i].hand.append(cards_to_pass[i+1][j])
 		for j in range(3):
 			players[3].hand.append(cards_to_pass[0][j])
-	else:
+	elif to_pass=="across":
 		for i in range(3):
 			players[0].hand.append(cards_to_pass[2][i])
 		for i in range(3):
