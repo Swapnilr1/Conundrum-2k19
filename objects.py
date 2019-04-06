@@ -38,13 +38,16 @@ class player():
 		self.round_score+=num
 	def update_total_score(self,num):
 		self.score+=num
-	def select_3_init(self,to_pass):
-		a,b,c =	self.hand[0],self.hand[1],self.hand[2]
-		self.hand.remove(a)
-		self.hand.remove(b)
-		self.hand.remove(c)
+	def give_3_init(self,to_pass):
+		if(to_pass!="no"):
+			a,b,c =	self.hand[0],self.hand[1],self.hand[2]
+			self.hand.remove(a)
+			self.hand.remove(b)
+			self.hand.remove(c)
+			return [a,b,c]
 		# make fn
 	def get_3_init(self,cards):
+		# a,b,c=get_3_init(self.hand)
 		self.hand.append(cards[0])
 		self.hand.append(cards[1])
 		self.hand.append(cards[2])

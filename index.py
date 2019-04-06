@@ -23,7 +23,15 @@ def isValid_first(card_a,player):
 	else:
 		curr_suit=card_a.suit
 		return True
-
+def check_pass(round_num):
+	if round_num%4==0:
+		return "no"
+	elif round_num%4==1:
+		return "left"
+	elif round_num%4==2:
+		return "right"
+	else:
+		return "across"
 def isValid(card_b,player):
 	if card_b.suit!=curr_suit:
 		if(find_suit(player.get_hand(),curr_suit)==False):
@@ -89,25 +97,50 @@ def evaluate_round(players):
 	else:
 		for i in range(4):
 			players[i].score+=players[i].round_score
-
+def give_cards(players,to_pass):
+	if to_pass=="left":
+		for i in range(1,4):
+			for j in range(3):
+				players[i].hand.append(cards_to_pass[i-1][j])
+		for j in range(3):
+			players[0].hand.append(cards_to_pass[3][j])
+	elif to_pass=="right":
+		for i in range(3):
+			for j in range(3):
+				players[i].hand.append(cards_to_pass[i+1][j])
+		for j in range(3):
+			players[3].hand.append(cards_to_pass[0][j])
+	else:
+		for i in range(3):
+			players[0].hand.append(cards_to_pass[2][i])
+		for i in range(3):
+			players[2].hand.append(cards_to_pass[0][i])
+		for i in range(3):
+			players[1].hand.append(cards_to_pass[3][i])
+		for i in range(3):
+			players[3].hand.append(cards_to_pass[1][i])
 players=[]
-names=["Apple","Ball","Cat","Dog"]
+names=["Fer","Fallen","Taco","Cold"]
 for i in range(4):
 	players.append(player(names[i]))
 deck=Deck()
+round_num=0
 while(1):#entire game
+	round_num+=1
 	for i in range(4):
 		print players[i].name,players[i].score
 	hands=deck.divide_into_parts(4)
+	cards_to_pass=[]
 	for i in range(4):
 		players[i].give_cards(hands[i])#distribute cards
 		players[i].init_round_score()#initialize round score to 0
-
+		cards_to_pass.append(players[i].give_3_init(check_pass(round_num)))
+	give_cards(players,check_pass(round_num))
 	heart_break=0
 	while(players[0].get_hand()):#for every round while hand is not empty
 		cardforhand=[]
 		curr_suit=""
-		print "Throw",players[0].name
+		print "Move",players[0].name
 		card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
 		if(isValid_first(card_a,players[0])==True):
 			curr_suit=card_a.suit
@@ -129,7 +162,7 @@ while(1):#entire game
 			if(players[0].num_penalties>=max_penals):
 				players[0].score+=100
 				break		
-		print "Throw",players[1].name
+		print "Move",players[1].name
 		card_b=players[1].choose(players[0].name,players[2].name,players[3].name,players[0].score,players[2].score,players[3].score,players[0].round_score,players[2].round_score,players[3].round_score,players[0].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
 		if(isValid(card_b,players[1])==True):
 			cardforhand.append(card_b)
@@ -146,11 +179,10 @@ while(1):#entire game
 				else:
 					print "wrong card"
 					players[1].num_penalties+=1
-			print "numasdasd",players[1].num_penalties
 			if(players[1].num_penalties>=max_penals):
 				players[1].score+=100
 				break
-		print "Throw",players[2].name
+		print "Move",players[2].name
 		card_c=players[2].choose(players[0].name,players[1].name,players[3].name,players[0].score,players[1].score,players[3].score,players[0].round_score,players[1].round_score,players[3].round_score,players[0].passed_cards,players[1].passed_cards,players[3].passed_cards,cardforhand)
 		if(isValid(card_c,players[2])==True):
 			cardforhand.append(card_c)
@@ -170,7 +202,7 @@ while(1):#entire game
 			if(players[2].num_penalties>=max_penals):
 				players[2].score+=100
 				break
-		print "Throw",players[3].name
+		print "Move",players[3].name
 		card_d=players[3].choose(players[0].name,players[1].name,players[2].name,players[0].score,players[1].score,players[2].score,players[0].round_score,players[1].round_score,players[2].round_score,players[0].passed_cards,players[1].passed_cards,players[2].passed_cards,cardforhand)
 		if(isValid(card_d,players[3])==True):
 			cardforhand.append(card_d)
