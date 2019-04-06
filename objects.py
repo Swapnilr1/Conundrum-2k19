@@ -59,7 +59,7 @@ class player():
 		for i in cardsforhand:
 			print i.suit,i.rank
 		print 
-		print "Hand for player",self.name
+		print "Cards for player",self.name
 		for i in range(len(self.hand)):
 			print i,"-->",self.hand[i].suit,self.hand[i].rank
 		print "give index of card:-"
