@@ -1,6 +1,6 @@
 from random import shuffle
 suits=["D","S","H","C"]
-ranks=["A","K","Q","J","10","9","8","7","6","5","4","3","2"]
+ranks=[14,13,12,11,10,9,8,7,6,5,4,3,2]
 class Card():
 	"""docstring for Card"""
 	def __init__(self, suit,rank):
@@ -23,11 +23,16 @@ class Deck(object):
 		return self.res
 class player():
 	"""docstring for player"""
-	def __init__(self,hand):
-		self.__hand=hand  #private
+	def __init__(self,name):
+		self.name=name
+		self.hand=[]  #private
 		self.round_score=0
 		self.score=0
 		self.passed_cards=[]
+	def init_round_score(self):
+		self.round_score=0
+	def give_cards(self,hand):
+		self.hand=hand
 	def update_round_score(self,num):
 		self.round_score+=num
 	def update_total_score(self,num):
@@ -43,16 +48,25 @@ class player():
 		self.hand.append(cards[0])
 		self.hand.append(cards[1])
 		self.hand.append(cards[2])
-	def choose(self,player1,player2,player3):
+	def choose(self,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		# card=get_card(self.hand,player1,player2,player3)
-		card=self.hand[0]
-		return card
+		print "cards player till now in round:- "
+		for i in cardsforhand:
+			print i.suit,i.rank
+		print 
+		print "Hand for player",self.name
+		for i in range(len(self.hand)):
+			print i,"-->",self.hand[i].suit,self.hand[i].rank
+		print "give index of card:-"
+		index=input()
+		return self.hand[index]
 		# make fn
 		# check if valid card
 	def get_hand(self):
 		return self.hand
-	def remove_card(self,card):
+	def add_passed_cards(self,card):
 		self.hand.remove(card)
+		self.passed_cards.append(card)
 		# bool valid=False
 		# for i in self.hand:
 		# 	if card==self.hand[i]:
