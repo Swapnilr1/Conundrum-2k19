@@ -1,4 +1,5 @@
 from random import shuffle
+
 suits=["D","S","H","C"]
 ranks=[14,13,12,11,10,9,8,7,6,5,4,3,2]
 class Card():
@@ -40,6 +41,7 @@ class player():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
+			# a,b,c=get_3_init(self.hand)
 			a,b,c =	self.hand[0],self.hand[1],self.hand[2]
 			self.hand.remove(a)
 			self.hand.remove(b)
@@ -47,13 +49,12 @@ class player():
 			return [a,b,c]
 		# make fn
 	def get_3_init(self,cards):
-		# a,b,c=get_3_init(self.hand)
 		self.hand.append(cards[0])
 		self.hand.append(cards[1])
 		self.hand.append(cards[2])
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
-		# card= get_card_from_user(this,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		# card= get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
 		
 		# --------------------------------------------------------------------------------------------------------
 		# THIS CODE IS FOR MANUAL BOT
