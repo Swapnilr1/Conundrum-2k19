@@ -1,4 +1,5 @@
 from objects import *
+from get_3cards import *
 heart_break=0
 curr_suit=""
 max_penals=10
@@ -236,6 +237,12 @@ while(1):#entire game
 		if(Min>min(Min,players[i].score)):
 			Min=players[i].score
 			index=i
+	winners=[]
+	for i in range(4):
+		if players[i].score==players[index].score:
+			winners.append(players[i].name)
 	if Max>=100:
-		print players[index].name,"Wins"
+		for i in winners:
+			print i," "
+		print "wins"
 		break

@@ -43,6 +43,15 @@ class player():
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
 			a,b,c=get_3cards.get_3_init(self,to_pass)
+			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
+				self.num_penalties+=1
+				card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+				if self.num_penalties==10:
+					self.score+=100
+					return [self.hand[0],self.hand[1],self.hand[2]]
+			self.hand.remove(a)
+			self.hand.remove(b)
+			self.hand.remove(c)
 			return [a,b,c]
 		# make fn
 	
@@ -51,9 +60,9 @@ class player():
 		# card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
 		# print card.suit
 		# while((card in self.hand)==False):
-		# 	num_penalties+=1
+		# 	self.num_penalties+=1
 		# 	card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# 	if num_penalties==10:
+		# 	if self.num_penalties==10:
 		# 		self.score+=100
 		# 		return self.hand[0]
 		# return card
