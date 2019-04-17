@@ -42,7 +42,6 @@ class player1():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
-			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -108,7 +107,6 @@ class player2():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
-			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -174,7 +172,6 @@ class player3():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
-			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -240,7 +237,6 @@ class player4():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
-			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1

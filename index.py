@@ -252,7 +252,6 @@ while(1):#entire game
 			if(players[3].num_penalties>=max_penals):
 				players[3].score+=100
 				break
-		print cardforhand
 		index=evaluate_hand(cardforhand,players)		
 		print "HAND FOR PLAYER",players[index].name
 		for i in range(4-index):
