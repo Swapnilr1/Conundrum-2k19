@@ -1,3 +1,5 @@
+from random import randint
+
 def getindex(player, suit, rank):
 	index = 0
 	for hand in player.hand:
@@ -17,31 +19,65 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 	if 2 in decks['C']:
 		return player.hand[getindex(player, 'C', 2)]
 	if len(cardsforhand)==0: #My turn is first
-		
-		
+		available_suits = []
+		if (len(decks['C'])>0):
+			available_suits.append('C')
+		if (len(decks['H'])>0):
+			available_suits.append('H')
+		if (len(decks['D'])>0):
+			available_suits.append('D')
 
-	#We have a card from the deck being played.
-	if len(decks[cardsforhand[0].suit]) != 0:
-		deck = sorted(decks[cardsforhand[0].suit]).reverse()
-		card_to_play = (cardsforhand[0].suit,deck[0])
-		for i in range(1, len(deck)):
-			if deck[i] < cardsforhand[0].rank:
-				card_to_play = deck[i]
-	
+		if (len(available_suits)==0): #only Spades remaining
+			sortedspades = sorted(decks['S'])
+			return player.hand[getindex(player, 'S', decks['S'][0])]
+		
+		suitn = randint(1, len(available_suits)) - 1
+		if (suitn == 0):
+			suit='C'
+		if (suitn == 1):
+			suit='H'
+		if (suitn == 2):
+			suit='D'
+		rank = decks[suit][randint(1, len(decks[suit])) -1]
+		return player.hand[getindex(player, suit, rank]
+
+
 	else:
-		if 12 in decks['S']:
-			card_to_play = ('S', 12)
-		if 13 in decks['S']:
-			card_to_play = ('S', 13)
-		if 14 in decks['S']:
-			card_to_play = ('S', 14)
-		elif len(decks['H']) != 0:
-			card_to_play = ('H', sorted(decks['H'])[-1])	
-		elif len(decks['D']) != 0:
-			card_to_play = ('D', sorted(decks['D'])[-1])
-		elif len(decks['C']) != 0:
-			card_to_play = ('C', sorted(decks['C'])[-1])
-		elif len(decks['S']) != 0:
-			card_to_play = ('S', sorted(decks['S'])[-1])
+
+		#We have a card from the deck being played.
+		if len(decks[cardsforhand[0].suit]) != 0:
+			largest_already_played = cardsforhand[0].rank
+			for i in range(1,len(cardsforhand)):
+				largest_already_played = max(largest_already_played, cardsforhand[i].rank)
+			deck = sorted(decks[cardsforhand[0].suit])[::-1]
+			cards_to_play = [cardsforhand[0].suit,deck[0]]
+			for i in range(1, len(deck)):
+				if deck[i] < largest_already_played:
+					cards_to_play.append(cardsforhand[0].suit,deck[i])
+					break
+			heart_or_queen = False
+			for i in cardsforhand:
+				if i.suit == 'H' or (i.rank==12 and i.suit=='S'):
+					heart_or_queen = True
+					break
+			if heart_or_queen:
+				card_to_play = cards_to_play[-1]
+			else:
+				card_to_play = cards_to_play[randint(0,len(cards_to_play)-1)]
+		else:
+			if 12 in decks['S']:
+				card_to_play = ('S', 12)
+			if 13 in decks['S']:
+				card_to_play = ('S', 13)
+			if 14 in decks['S']:
+				card_to_play = ('S', 14)
+			elif len(decks['H']) != 0:
+				card_to_play = ('H', sorted(decks['H'])[-1])	
+			elif len(decks['D']) != 0:
+				card_to_play = ('D', sorted(decks['D'])[-1])
+			elif len(decks['C']) != 0:
+				card_to_play = ('C', sorted(decks['C'])[-1])
+			elif len(decks['S']) != 0:
+				card_to_play = ('S', sorted(decks['S'])[-1])
 			
-	return player.hand[0]
+		return player.hand[getindex(player, suit, rank)]
