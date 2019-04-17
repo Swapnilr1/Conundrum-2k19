@@ -1,6 +1,13 @@
 from objects import *
 
+def getdeck(player):
+	decks = {'C': [], 'H': [], 'D':[], 'S':[]}
+	for hand in player.hand:
+		decks[hand.suit].append(hand.rank)
+	return decks
+
 def get_3_init(player,to_pass):
+	return player.hand[0],player.hand[1],player.hand[2]
 	# to_pass can be left , right or across
 	suits = ['H', 'C', 'D', 'S']
 	decks = {'C': [], 'H': [], 'D':[], 'S':[]}
@@ -10,6 +17,7 @@ def get_3_init(player,to_pass):
 	for hand in player.hand:
 		decks[hand.suit].append(hand.rank)
 
+	
 	if 12 in decks['S']:
 		if 13 in decks['S']:
 			to_pass.extend([Card('S', 12),Card('S', 13)])	#Change all extend and append to this format
