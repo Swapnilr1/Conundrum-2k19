@@ -16,16 +16,16 @@ def get_3_init(player,to_pass):
 		decks[hand.suit].append(hand.rank)
 
 	if 12 in decks['S']:
-		if 13 in decks['S']:
-			Pass.add(('S', 12))
-			Pass.add(('S', 13))	#Change all extend and append to this format
-		elif 14 in decks['S']:
-			Pass.add(('S', 12))
-			Pass.add(('S', 14))
-		elif 13 in decks['S'] and 14 in decks['S']:
+		if 13 in decks['S'] and 14 in decks['S']:
 			Pass.add(('S', 12))
 			Pass.add(('S', 13))
 			Pass.add(('S', 14))
+		elif 14 in decks['S']:
+			Pass.add(('S', 12))
+			Pass.add(('S', 14))
+		elif 13 in decks['S']:
+			Pass.add(('S', 12))
+			Pass.add(('S', 13))	
 		elif len(decks['S']) < 3:
 			for i in decks['S']:
 				Pass.add(('S', i))
