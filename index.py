@@ -139,151 +139,141 @@ while(1):#entire game
 		players[i].init_round_score()#initialize round score to 0
 		cards_to_pass.append(players[i].give_3_init(check_pass(round_num)))
 	give_cards(players,check_pass(round_num))
-	print "After passing:"
+	heart_break=0
+	two_of_club=-1
 	for i in range(4):
-		print getdeck(players[i])
-	print "Press any key to continue"
-	contin = input()
-	#continue = input()
-	# heart_break=0
-	# two_of_club=-1
-	# for i in range(4):
-	# 	for j in players[i].hand:
-	# 		if j.suit=="C" and j.rank==2:
-	# 			two_of_club=i
-	# 			break
-	# for i in range(4-two_of_club):
-	# 	players=[players[-1]] + players[0:-1]
-	# for i in range(4):
-	# 	players[i].give_cards(hands[i])#distribute cards
-	# 	players[i].init_round_score()#initialize round score to 0
-	# 	cards_to_pass.append(players[i].give_3_init(check_pass(round_num)))
-	
-	# while(players[0].get_hand()):#for every round while hand is not empty
-	# 	cardforhand=[]
-	# 	curr_suit=""
-	# 	print "Move",players[0].name
-	# 	card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
-	# 	if hand_num==0:
-	# 		if card_a.suit!="C" or card_a.rank!=2:
-	# 			print "wrong card"
-	# 			players[0].num_penalties+=1
-	# 			while(players[0].num_penalties<max_penals):
-	# 				card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
-	# 				if card_a.suit=="C" and card_a.rank==2:
-	# 					curr_suit=card_a.suit
-	# 					cardforhand.append(card_a)
-	# 					players[0].add_passed_cards(card_a)
-	# 					break
-	# 				else:
-	# 					print "wrong card"
-	# 					players[0].num_penalties+=1
-	# 			if(players[0].num_penalties>=max_penals):
-	# 				players[0].score+=100
-	# 				break
+		for j in players[i].hand:
+			if j.suit=="C" and j.rank==2:
+				two_of_club=i
+				break
+	for i in range(4-two_of_club):
+		players=[players[-1]] + players[0:-1]
+	while(players[0].get_hand()):#for every round while hand is not empty
+		cardforhand=[]
+		curr_suit=""
+		print "Move",players[0].name
+		card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
+		if hand_num==0:
+			if card_a.suit!="C" or card_a.rank!=2:
+				print "wrong card"
+				players[0].num_penalties+=1
+				while(players[0].num_penalties<max_penals):
+					card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
+					if card_a.suit=="C" and card_a.rank==2:
+						curr_suit=card_a.suit
+						cardforhand.append(card_a)
+						players[0].add_passed_cards(card_a)
+						break
+					else:
+						print "wrong card"
+						players[0].num_penalties+=1
+				if(players[0].num_penalties>=max_penals):
+					players[0].score+=100
+					break
 
-	# 	else: 
-	# 		if(isValid_first(card_a,players[0])==True):
-	# 			curr_suit=card_a.suit
-	# 			cardforhand.append(card_a)
-	# 			players[0].add_passed_cards(card_a)
-	# 		else:
-	# 			print "wrong card"
-	# 			players[0].num_penalties+=1
-	# 			while(players[0].num_penalties<max_penals):
-	# 				card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
-	# 				if (isValid_first(card_a,players[0])==True):
-	# 					curr_suit=card_a.suit
-	# 					cardforhand.append(card_a)
-	# 					players[0].add_passed_cards(card_a)
-	# 					break
-	# 				else:
-	# 					print "wrong card"
-	# 					players[0].num_penalties+=1
-	# 			if(players[0].num_penalties>=max_penals):
-	# 				players[0].score+=100
-	# 				break		
-	# 	print "Move",players[1].name
-	# 	card_b=players[1].choose(players[0].name,players[2].name,players[3].name,players[0].score,players[2].score,players[3].score,players[0].round_score,players[2].round_score,players[3].round_score,players[0].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
-	# 	if(isValid(card_b,players[1])==True):
-	# 		cardforhand.append(card_b)
-	# 		players[1].add_passed_cards(card_b)
-	# 	else:
-	# 		print "wrong card"
-	# 		players[1].num_penalties+=1
-	# 		while(players[1].num_penalties<max_penals):
-	# 			card_b=players[1].choose(players[0].name,players[2].name,players[3].name,players[0].score,players[2].score,players[3].score,players[0].round_score,players[2].round_score,players[3].round_score,players[0].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
-	# 			if(isValid(card_b,players[1])==True):
-	# 				cardforhand.append(card_b)
-	# 				players[1].add_passed_cards(card_b)
-	# 				break
-	# 			else:
-	# 				print "wrong card"
-	# 				players[1].num_penalties+=1
-	# 		if(players[1].num_penalties>=max_penals):
-	# 			players[1].score+=100
-	# 			break
-	# 	print "Move",players[2].name
-	# 	card_c=players[2].choose(players[0].name,players[1].name,players[3].name,players[0].score,players[1].score,players[3].score,players[0].round_score,players[1].round_score,players[3].round_score,players[0].passed_cards,players[1].passed_cards,players[3].passed_cards,cardforhand)
-	# 	if(isValid(card_c,players[2])==True):
-	# 		cardforhand.append(card_c)
-	# 		players[2].add_passed_cards(card_c)
-	# 	else:
-	# 		print "wrong card"
-	# 		players[2].num_penalties+=1
-	# 		while(players[2].num_penalties<max_penals):
-	# 			card_c=players[2].choose(players[0].name,players[1].name,players[3].name,players[0].score,players[1].score,players[3].score,players[0].round_score,players[1].round_score,players[3].round_score,players[0].passed_cards,players[1].passed_cards,players[3].passed_cards,cardforhand)
-	# 			if(isValid(card_c,players[2])==True):
-	# 				cardforhand.append(card_c)
-	# 				players[2].add_passed_cards(card_c)
-	# 				break
-	# 			else:
-	# 				print "wrong card"
-	# 				players[2].num_penalties+=1
-	# 		if(players[2].num_penalties>=max_penals):
-	# 			players[2].score+=100
-	# 			break
-	# 	print "Move",players[3].name
-	# 	card_d=players[3].choose(players[0].name,players[1].name,players[2].name,players[0].score,players[1].score,players[2].score,players[0].round_score,players[1].round_score,players[2].round_score,players[0].passed_cards,players[1].passed_cards,players[2].passed_cards,cardforhand)
-	# 	if(isValid(card_d,players[3])==True):
-	# 		cardforhand.append(card_d)
-	# 		players[3].add_passed_cards(card_d)
-	# 	else:
-	# 		print "wrong card"
-	# 		players[3].num_penalties+=1
-	# 		while(players[3].num_penalties<max_penals):
-	# 			card_d=players[3].choose(players[0].name,players[1].name,players[2].name,players[0].score,players[1].score,players[2].score,players[0].round_score,players[1].round_score,players[2].round_score,players[0].passed_cards,players[1].passed_cards,players[2].passed_cards,cardforhand)
-	# 			if(isValid(card_d,players[3])==True):
-	# 				cardforhand.append(card_d)
-	# 				players[3].add_passed_cards(card_d)
-	# 				break
-	# 			else:
-	# 				print "wrong card"
-	# 				players[3].num_penalties+=1
-	# 		if(players[3].num_penalties>=max_penals):
-	# 			players[3].score+=100
-	# 			break
-	# 	index=evaluate_hand(cardforhand,players)		
-	# 	print "HAND FOR PLAYER",players[index].name
-	# 	for i in range(4-index):
-	# 		players=[players[-1]] + players[0:-1]
-	# 	hand_num+=1
-	# print "END OF ROUND"
-	# evaluate_round(players)
-	# Min=9999
-	# Min_index=-1
-	# Max=-1
-	# for i in range(4):
-	# 	Max=max(Max,players[i].score)
-	# 	if(Min>min(Min,players[i].score)):
-	# 		Min=players[i].score
-	# 		index=i
-	# winners=[]
-	# for i in range(4):
-	# 	if players[i].score==players[index].score:
-	# 		winners.append(players[i].name)
-	# if Max>=100:
-	# 	for i in winners:
-	# 		print i," "
-	# 	print "wins"
-	# 	break
+		else: 
+			if(isValid_first(card_a,players[0])==True):
+				curr_suit=card_a.suit
+				cardforhand.append(card_a)
+				players[0].add_passed_cards(card_a)
+			else:
+				print "wrong card"
+				players[0].num_penalties+=1
+				while(players[0].num_penalties<max_penals):
+					card_a=players[0].choose(players[1].name,players[2].name,players[3].name,players[1].score,players[2].score,players[3].score,players[1].round_score,players[2].round_score,players[3].round_score,players[1].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
+					if (isValid_first(card_a,players[0])==True):
+						curr_suit=card_a.suit
+						cardforhand.append(card_a)
+						players[0].add_passed_cards(card_a)
+						break
+					else:
+						print "wrong card"
+						players[0].num_penalties+=1
+				if(players[0].num_penalties>=max_penals):
+					players[0].score+=100
+					break		
+		print "Move",players[1].name
+		card_b=players[1].choose(players[0].name,players[2].name,players[3].name,players[0].score,players[2].score,players[3].score,players[0].round_score,players[2].round_score,players[3].round_score,players[0].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
+		if(isValid(card_b,players[1])==True):
+			cardforhand.append(card_b)
+			players[1].add_passed_cards(card_b)
+		else:
+			print "wrong card"
+			players[1].num_penalties+=1
+			while(players[1].num_penalties<max_penals):
+				card_b=players[1].choose(players[0].name,players[2].name,players[3].name,players[0].score,players[2].score,players[3].score,players[0].round_score,players[2].round_score,players[3].round_score,players[0].passed_cards,players[2].passed_cards,players[3].passed_cards,cardforhand)
+				if(isValid(card_b,players[1])==True):
+					cardforhand.append(card_b)
+					players[1].add_passed_cards(card_b)
+					break
+				else:
+					print "wrong card"
+					players[1].num_penalties+=1
+			if(players[1].num_penalties>=max_penals):
+				players[1].score+=100
+				break
+		print "Move",players[2].name
+		card_c=players[2].choose(players[0].name,players[1].name,players[3].name,players[0].score,players[1].score,players[3].score,players[0].round_score,players[1].round_score,players[3].round_score,players[0].passed_cards,players[1].passed_cards,players[3].passed_cards,cardforhand)
+		if(isValid(card_c,players[2])==True):
+			cardforhand.append(card_c)
+			players[2].add_passed_cards(card_c)
+		else:
+			print "wrong card"
+			players[2].num_penalties+=1
+			while(players[2].num_penalties<max_penals):
+				card_c=players[2].choose(players[0].name,players[1].name,players[3].name,players[0].score,players[1].score,players[3].score,players[0].round_score,players[1].round_score,players[3].round_score,players[0].passed_cards,players[1].passed_cards,players[3].passed_cards,cardforhand)
+				if(isValid(card_c,players[2])==True):
+					cardforhand.append(card_c)
+					players[2].add_passed_cards(card_c)
+					break
+				else:
+					print "wrong card"
+					players[2].num_penalties+=1
+			if(players[2].num_penalties>=max_penals):
+				players[2].score+=100
+				break
+		print "Move",players[3].name
+		card_d=players[3].choose(players[0].name,players[1].name,players[2].name,players[0].score,players[1].score,players[2].score,players[0].round_score,players[1].round_score,players[2].round_score,players[0].passed_cards,players[1].passed_cards,players[2].passed_cards,cardforhand)
+		if(isValid(card_d,players[3])==True):
+			cardforhand.append(card_d)
+			players[3].add_passed_cards(card_d)
+		else:
+			print "wrong card"
+			players[3].num_penalties+=1
+			while(players[3].num_penalties<max_penals):
+				card_d=players[3].choose(players[0].name,players[1].name,players[2].name,players[0].score,players[1].score,players[2].score,players[0].round_score,players[1].round_score,players[2].round_score,players[0].passed_cards,players[1].passed_cards,players[2].passed_cards,cardforhand)
+				if(isValid(card_d,players[3])==True):
+					cardforhand.append(card_d)
+					players[3].add_passed_cards(card_d)
+					break
+				else:
+					print "wrong card"
+					players[3].num_penalties+=1
+			if(players[3].num_penalties>=max_penals):
+				players[3].score+=100
+				break
+		print cardforhand
+		index=evaluate_hand(cardforhand,players)		
+		print "HAND FOR PLAYER",players[index].name
+		for i in range(4-index):
+			players=[players[-1]] + players[0:-1]
+		hand_num+=1
+	print "END OF ROUND"
+	evaluate_round(players)
+	Min=9999
+	Min_index=-1
+	Max=-1
+	for i in range(4):
+		Max=max(Max,players[i].score)
+		if(Min>min(Min,players[i].score)):
+			Min=players[i].score
+			index=i
+	winners=[]
+	for i in range(4):
+		if players[i].score==players[index].score:
+			winners.append(players[i].name)
+	if Max>=100:
+		for i in winners:
+			print i," "
+		print "wins"
+		break
