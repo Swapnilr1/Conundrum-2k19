@@ -39,7 +39,7 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 		if (suitn == 2):
 			suit='D'
 		rank = decks[suit][randint(1, len(decks[suit])) -1]
-		return player.hand[getindex(player, suit, rank]
+		return player.hand[getindex(player, suit, rank)]
 
 
 	else:
@@ -80,4 +80,4 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 			elif len(decks['S']) != 0:
 				card_to_play = ('S', sorted(decks['S'])[-1])
 			
-		return player.hand[getindex(player, suit, rank)]
+		return player.hand[getindex(player, card_to_play[0], card_to_play[1])]
