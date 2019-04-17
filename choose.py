@@ -38,7 +38,7 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 			suit='H'
 		if (suitn == 2):
 			suit='D'
-		rank = decks[suit][randint(1, len(decks[suit])) -1]
+		rank = decks[suit][randint(0, len(decks[suit]) -1)]
 		return player.hand[getindex(player, suit, rank)]
 
 
@@ -50,10 +50,10 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 			for i in range(1,len(cardsforhand)):
 				largest_already_played = max(largest_already_played, cardsforhand[i].rank)
 			deck = sorted(decks[cardsforhand[0].suit])[::-1]
-			cards_to_play = [cardsforhand[0].suit,deck[0]]
+			cards_to_play = [(cardsforhand[0].suit,deck[0])]
 			for i in range(1, len(deck)):
 				if deck[i] < largest_already_played:
-					cards_to_play.append(cardsforhand[0].suit,deck[i])
+					cards_to_play.append((cardsforhand[0].suit,deck[i]))
 					break
 			heart_or_queen = False
 			for i in cardsforhand:
