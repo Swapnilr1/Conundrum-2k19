@@ -170,7 +170,11 @@ while(1):#entire game
 				if(players[0].num_penalties>=max_penals):
 					players[0].score+=100
 					break
-
+			else:
+				card_suit="C"
+				cardforhand.append(card_a)
+				players[0].add_passed_cards(card_a)
+				
 		else: 
 			if(isValid_first(card_a,players[0])==True):
 				curr_suit=card_a.suit
