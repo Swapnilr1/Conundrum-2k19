@@ -1,3 +1,10 @@
+def getindex(player, suit, rank):
+	index = 0
+	for hand in player.hand:
+		if hand.rank == rank and hand.suit==suit:
+			return index
+		index += 1
+
 def getdeck(player):
 	decks = {'C': [], 'H': [], 'D':[], 'S':[]}
 	for hand in player.hand:
@@ -7,8 +14,15 @@ def getdeck(player):
 def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 	# function returns a card from your hand for the current round.
 	decks = getdeck(player)
+	if 2 in decks['C']:
+		return player.hand[getindex(player, 'C', 2)]
+	if len(cardsforhand)==0: #My turn is first
+		
+		
+
+	#We have a card from the deck being played.
 	if len(decks[cardsforhand[0].suit]) != 0:
-		deck = decks[cardsforhand[0].suit].sorted().reverse()
+		deck = sorted(decks[cardsforhand[0].suit]).reverse()
 		card_to_play = (cardsforhand[0].suit,deck[0])
 		for i in range(1, len(deck)):
 			if deck[i] < cardsforhand[0].rank:
