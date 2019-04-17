@@ -1,3 +1,5 @@
+from random import randint
+
 def getdeck(player):
 	decks = {'C': [], 'H': [], 'D':[], 'S':[]}
 	for hand in player.hand:
@@ -8,11 +10,27 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 	# function returns a card from your hand for the current round.
 	decks = getdeck(player)
 	if len(decks[cardsforhand[0].suit]) != 0:
-		deck = decks[cardsforhand[0].suit].sorted().reverse()
-		card_to_play = (cardsforhand[0].suit,deck[0])
+		largest_already_played = cardsforhand[0].rank
+		for i in range(1,len(cardsforhand)):
+			largest_already_played = max(largest_already_played, cardsforhand[i].rank)
+		deck = sorted(decks[cardsforhand[0].suit])[::-1]
+		cards_to_play = [cardsforhand[0].suit,deck[0]]
 		for i in range(1, len(deck)):
-			if deck[i] < cardsforhand[0].rank:
-				card_to_play = deck[i]
+			if deck[i] < largest_already_played:
+				cards_to_play.append(cardsforhand[0].suit,deck[i])
+				break
+		heart_or_queen = False
+		for i in cardsforhand:
+			if i.suit == 'H' or (i.rank==12 and i.suit=='S'):
+				heart_or_queen = True
+				break
+		if heart_or_queen:
+			card_to_play = cards_to_play[-1]
+		else:
+			card_to_play = cards_to_play[randint(0,len(cards_to_play)-1)]
+
+
+		
 	
 	else:
 		if 12 in decks['S']:
