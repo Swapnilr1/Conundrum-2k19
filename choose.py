@@ -19,10 +19,27 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 	if 2 in decks['C']:
 		return player.hand[getindex(player, 'C', 2)]
 	if len(cardsforhand)==0: #My turn is first
+		heart=False
+		for i in cardsforhand:
+			if i.suit == 'H':
+				heart = True
+				break
+		for i in player_1_passed_cards:
+			if i.suit == 'H':
+				heart = True
+				break
+		for i in player_2_passed_cards:
+			if i.suit == 'H':
+				heart = True
+				break
+		for i in player_3_passed_cards:
+			if i.suit == 'H':
+				heart = True
+				break
 		available_suits = []
 		if (len(decks['C'])>0):
 			available_suits.append('C')
-		if (len(decks['H'])>0):
+		if (heart and len(decks['H'])>0):
 			available_suits.append('H')
 		if (len(decks['D'])>0):
 			available_suits.append('D')
