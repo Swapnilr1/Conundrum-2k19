@@ -139,9 +139,6 @@ while(1):#entire game
 		players[i].init_round_score()#initialize round score to 0
 		cards_to_pass.append(players[i].give_3_init(check_pass(round_num)))
 	give_cards(players,check_pass(round_num))
-	print "After passing:"
-	for i in range(4):
-		print getdeck(players[i])
 	heart_break=0
 	two_of_club=-1
 	for i in range(4):
@@ -177,7 +174,7 @@ while(1):#entire game
 				card_suit="C"
 				cardforhand.append(card_a)
 				players[0].add_passed_cards(card_a)
-				
+
 		else: 
 			if(isValid_first(card_a,players[0])==True):
 				curr_suit=card_a.suit
