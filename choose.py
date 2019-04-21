@@ -15,14 +15,14 @@ def getdeck(player):
 def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 	# function returns a card from your hand for the current round.
 	heart_played = False
-	print("Player_1 Passed Cards")
+	#print("Player_1 Passed Cards")
 	i = (len(player_1_passed_cards)//13) * 13
 
 	while i<len(player_1_passed_cards) and heart_played == False:
 		if player_1_passed_cards[i].suit =='H':
 			heart_played = True
 		i+=1
-	print("Player_2 Passed Cards")
+	#print("Player_2 Passed Cards")
 	i = (len(player_2_passed_cards)//13) * 13
 
 	while i<len(player_2_passed_cards) and heart_played == False:
@@ -31,7 +31,7 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 			break
 		i+=1
 
-	print("Player_3 Passed Cards")
+	#print("Player_3 Passed Cards")
 	i = (len(player_3_passed_cards)//13) * 13
 
 	while i<len(player_3_passed_cards) and heart_played == False:
@@ -52,9 +52,13 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 		if (len(decks['D'])>0):
 			available_suits.append('D')
 
-		if (len(available_suits)==0): #only Spades remaining
+		if (len(available_suits)==0 and len(decks['S'])>0): #only Spades remaining
 			sortedspades = sorted(decks['S'])
 			return player.hand[getindex(player, 'S', decks['S'][0])]
+
+		# Hearts has not been played yet; But only left with hearts
+		if (len(available_suits)==0 and len(decks['S'])==0):
+			available_suits.append('H')
 
 		suitn = randint(1, len(available_suits)) - 1
 		suit = available_suits[suitn]
