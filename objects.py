@@ -57,31 +57,31 @@ class player1():
 	
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
-		# card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# print card.suit
-		# while((card in self.hand)==False):
-		# 	self.num_penalties+=1
-		# 	card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# 	if self.num_penalties==10:
-		# 		self.score+=100
-		# 		return self.hand[0]
-		# return card
+		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		print card.suit, card.rank
+		while((card in self.hand)==False):
+			self.num_penalties+=1
+			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+			if self.num_penalties==10:
+				self.score+=100
+				return self.hand[0]
+		return card
 
 
 
 		# --------------------------------------------------------------------------------------------------------
 		# THIS CODE IS FOR MANUAL BOT
 		# COMMENT OUT THESE LINES AND UNCOMMENT THE ABOVE LINE TO WORK AS YOUR BOT
-		print "cards player till now in round:- "
-		for i in cardsforhand:
-			print i.suit,i.rank
-		print 
-		print "Cards for player",self.name
-		for i in range(len(self.hand)):
-			print i,"-->",self.hand[i].suit,self.hand[i].rank
-		print "give index of card:-"
-		index=input()
-		return self.hand[index]
+		# print "cards player till now in round:- "
+		# for i in cardsforhand:
+		# 	print i.suit,i.rank
+		# print 
+		# print "Cards for player",self.name
+		# for i in range(len(self.hand)):
+		# 	print i,"-->",self.hand[i].suit,self.hand[i].rank
+		# print "give index of card:-"
+		# index=input()
+		# return self.hand[index]
 		# --------------------------------------------------------------------------------------------------------
 	def get_hand(self):
 		return self.hand
@@ -122,31 +122,31 @@ class player2():
 	
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
-		# card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# print card.suit
-		# while((card in self.hand)==False):
-		# 	self.num_penalties+=1
-		# 	card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# 	if self.num_penalties==10:
-		# 		self.score+=100
-		# 		return self.hand[0]
-		# return card
+		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		print card.suit, card.rank
+		while((card in self.hand)==False):
+			self.num_penalties+=1
+			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+			if self.num_penalties==10:
+				self.score+=100
+				return self.hand[0]
+		return card
 
 
 
 		# --------------------------------------------------------------------------------------------------------
 		# THIS CODE IS FOR MANUAL BOT
 		# COMMENT OUT THESE LINES AND UNCOMMENT THE ABOVE LINE TO WORK AS YOUR BOT
-		print "cards player till now in round:- "
-		for i in cardsforhand:
-			print i.suit,i.rank
-		print 
-		print "Cards for player",self.name
-		for i in range(len(self.hand)):
-			print i,"-->",self.hand[i].suit,self.hand[i].rank
-		print "give index of card:-"
-		index=input()
-		return self.hand[index]
+		# print "cards player till now in round:- "
+		# for i in cardsforhand:
+		# 	print i.suit,i.rank
+		# print 
+		# print "Cards for player",self.name
+		# for i in range(len(self.hand)):
+		# 	print i,"-->",self.hand[i].suit,self.hand[i].rank
+		# print "give index of card:-"
+		# index=input()
+		# return self.hand[index]
 		# --------------------------------------------------------------------------------------------------------
 	def get_hand(self):
 		return self.hand
@@ -187,31 +187,31 @@ class player3():
 	
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
-		# card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# print card.suit
-		# while((card in self.hand)==False):
-		# 	self.num_penalties+=1
-		# 	card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# 	if self.num_penalties==10:
-		# 		self.score+=100
-		# 		return self.hand[0]
-		# return card
+		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		print card.suit, card.rank
+		while((card in self.hand)==False):
+			self.num_penalties+=1
+			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+			if self.num_penalties==10:
+				self.score+=100
+				return self.hand[0]
+		return card
 
 
 
 		# --------------------------------------------------------------------------------------------------------
 		# THIS CODE IS FOR MANUAL BOT
 		# COMMENT OUT THESE LINES AND UNCOMMENT THE ABOVE LINE TO WORK AS YOUR BOT
-		print "cards player till now in round:- "
-		for i in cardsforhand:
-			print i.suit,i.rank
-		print 
-		print "Cards for player",self.name
-		for i in range(len(self.hand)):
-			print i,"-->",self.hand[i].suit,self.hand[i].rank
-		print "give index of card:-"
-		index=input()
-		return self.hand[index]
+		# print "cards player till now in round:- "
+		# for i in cardsforhand:
+		# 	print i.suit,i.rank
+		# print 
+		# print "Cards for player",self.name
+		# for i in range(len(self.hand)):
+		# 	print i,"-->",self.hand[i].suit,self.hand[i].rank
+		# print "give index of card:-"
+		# index=input()
+		# return self.hand[index]
 		# --------------------------------------------------------------------------------------------------------
 	def get_hand(self):
 		return self.hand
@@ -252,31 +252,31 @@ class player4():
 	
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
-		# card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# print card.suit
-		# while((card in self.hand)==False):
-		# 	self.num_penalties+=1
-		# 	card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		# 	if self.num_penalties==10:
-		# 		self.score+=100
-		# 		return self.hand[0]
-		# return card
+		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+		print card.suit, card.rank
+		while((card in self.hand)==False):
+			self.num_penalties+=1
+			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
+			if self.num_penalties==10:
+				self.score+=100
+				return self.hand[0]
+		return card
 
 
 
 		# --------------------------------------------------------------------------------------------------------
 		# THIS CODE IS FOR MANUAL BOT
 		# COMMENT OUT THESE LINES AND UNCOMMENT THE ABOVE LINE TO WORK AS YOUR BOT
-		print "cards player till now in round:- "
-		for i in cardsforhand:
-			print i.suit,i.rank
-		print 
-		print "Cards for player",self.name
-		for i in range(len(self.hand)):
-			print i,"-->",self.hand[i].suit,self.hand[i].rank
-		print "give index of card:-"
-		index=input()
-		return self.hand[index]
+		# print "cards player till now in round:- "
+		# for i in cardsforhand:
+		# 	print i.suit,i.rank
+		# print 
+		# print "Cards for player",self.name
+		# for i in range(len(self.hand)):
+		# 	print i,"-->",self.hand[i].suit,self.hand[i].rank
+		# print "give index of card:-"
+		# index=input()
+		# return self.hand[index]
 		# --------------------------------------------------------------------------------------------------------
 	def get_hand(self):
 		return self.hand
