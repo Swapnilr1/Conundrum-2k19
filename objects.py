@@ -42,6 +42,7 @@ class player1():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
+			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -58,7 +59,7 @@ class player1():
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
 		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		print card.suit
+		print card.suit, card.rank
 		while((card in self.hand)==False):
 			self.num_penalties+=1
 			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
@@ -107,6 +108,7 @@ class player2():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
+			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -123,7 +125,7 @@ class player2():
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
 		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		print card.suit
+		print card.suit, card.rank
 		while((card in self.hand)==False):
 			self.num_penalties+=1
 			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
@@ -172,6 +174,7 @@ class player3():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
+			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -188,7 +191,7 @@ class player3():
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
 		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		print card.suit
+		print card.suit, card.rank
 		while((card in self.hand)==False):
 			self.num_penalties+=1
 			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
@@ -237,6 +240,7 @@ class player4():
 		self.score+=num
 	def give_3_init(self,to_pass):
 		if(to_pass!="no"):
+			print get_3cards.getdeck(self)
 			a,b,c=get_3cards.get_3_init(self,to_pass)
 			while(((a in self.hand)==False)  or  ((b in self.hand)==False) or ((c in self.hand)==False)):
 				self.num_penalties+=1
@@ -253,7 +257,7 @@ class player4():
 	def choose(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand):
 		
 		card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)
-		print card.suit
+		print card.suit, card.rank
 		while((card in self.hand)==False):
 			self.num_penalties+=1
 			card = get_card_from_user(self,player_1_name,player_2_name,player_3_name,player_1_score,player_2_score,player_3_score,player_1_round_score,player_2_round_score,player_3_round_score,player_1_passed_cards,player_2_passed_cards,player_3_passed_cards,cardsforhand)

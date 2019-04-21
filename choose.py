@@ -32,12 +32,7 @@ def get_card_from_user(player,player_1_name,player_2_name,player_3_name,player_1
 			return player.hand[getindex(player, 'S', decks['S'][0])]
 		
 		suitn = randint(1, len(available_suits)) - 1
-		if (suitn == 0):
-			suit='C'
-		if (suitn == 1):
-			suit='H'
-		if (suitn == 2):
-			suit='D'
+		suit = available_suits[suitn]
 		rank = decks[suit][randint(0, len(decks[suit]) -1)]
 		return player.hand[getindex(player, suit, rank)]
 
